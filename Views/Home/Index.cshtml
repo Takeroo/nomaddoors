@@ -1,0 +1,82 @@
+﻿@model Nomaddoors.Models.IndexModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_homepage.cshtml";
+}
+
+<section id="banner">
+    <header>
+        <h2>Upcoming Events</h2>
+    </header>
+</section>
+
+<section class="carousel">
+    <div class="reel">
+
+        <div class="mini-posts">
+        <!-- Mini Post -->
+         
+        @foreach (var item in Model.upcoming)
+        {					<!-- Mini Post -->
+            <article class="mini-post">
+                <a href="@Url.Action("Details", new { id = item.ID })" class="image"><img src="@Url.Content("~/Images/postCover/")@item.Img" alt="" /></a>
+                <header>
+                    <h3><a href="@Url.Action("Details", new { id = item.ID })">@Html.DisplayFor(modelItem => item.Name)</a></h3>
+                    <time class="published" datetime="2015-10-20">@Html.DisplayFor(modelItem => item.Date)</time>
+                    <a href="#" class="author"><img src="Images/titleLogo.png" alt="" /></a>
+                </header>
+            </article>
+        }
+    </div>
+
+        </div>
+</section>
+
+<section id="banner">
+    <header>
+        <h2>Past Events</h2>
+    </header>
+</section>
+
+<section class="carousel">
+    <div class="reel">
+        <div class="mini-posts">
+            <!-- Mini Post -->
+            @foreach (var item in Model.past)
+            {
+
+				if(item.Date1<DateTime.Today){			<!-- Mini Post -->
+                <article class="mini-post">
+                    <a href="@Url.Action("Details", new { id = item.ID })" class="image"><img src="@Url.Content("~/Images/postCover/")@item.Img" alt="" /></a>
+                    <header>
+                        <h3><a href="@Url.Action("Details", new { id = item.ID })">@Html.DisplayFor(modelItem => item.Name)</a></h3>
+                        <time class="published" datetime="2015-10-20">@Html.DisplayFor(modelItem => item.Date)</time>
+                        <a href="#" class="author"><img src="Images/titleLogo.png" alt="" /></a>
+                    </header>
+                </article>
+                }
+            }
+            </div>
+        </div>
+</section>
+
+<div class="wrapper style1">
+
+    <section id="features" class="container special">
+        <header>
+            <h2>Official Partners</h2>
+        </header>
+        <div class="row">
+            <article class="4u 12u(mobile) special">
+                <a href="http://ideagrad.com"><img src="Images/partners/ideagrad.png" style="display: block; margin-left: auto; margin-right: auto; height:10em;" alt="" /></a>
+            </article>
+            <article class="4u 12u(mobile) special">
+                <a href="http://artasian.co"><img src="Images/partners/artasian.png" style="display: block; margin-left: auto; margin-right: auto; height: 10em;" alt="" /></a>
+            </article>
+            <article class="4u 12u(mobile) special">
+                <a href="https://www.facebook.com/Kemin-guest-house-957244624330204/?fref=ts"><img src="Images/partners/keminguesthouse.jpg" style="display: block; margin-left: auto; margin-right: auto; height: 10em;" alt="" /></a>
+            </article>
+        </div>
+    </section>
+
+</div>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>NomadDoors</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="@Url.Content("~/Content/hyperspace/")assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="@Url.Content("~/Content/hyperspace/")assets/css/main.css" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="@Url.Content("~/Content/hyperspace/")assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="@Url.Content("~/Content/hyperspace/")assets/css/ie8.css" /><![endif]-->
+    </head>
+    <body>
+        <!--sidebar-->
+        <section id="sidebar">
+            <div class="inner">
+                <nav>
+                    <ul>
+                        <li><a href="#intro">Welcome</a></li>
+                        <!--<li><a href="#one">Create you Journey</a></li>-->
+                        <li><a href="#two">Join a Festival</a></li>
+                        <li><a href="#three">Discover the World</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <div id="wrapper">
+
+            @RenderBody()
+
+         </div>
+            <!-- Footer -->
+            <footer id="footer" class="wrapper style1-alt">
+                <div class="inner">
+                    <ul class="menu">
+                        <li>&copy; NomadDoors</li>
+                        <li>Design: <a href="#">Hubsystems</a></li>
+                    </ul>
+                </div>
+            </footer>
+
+            <!-- Scripts -->
+            <script src="@Url.Content("~/Content/hyperspace/")assets/js/jquery.min.js"></script>
+            <script src="@Url.Content("~/Content/hyperspace/")assets/js/jquery.scrollex.min.js"></script>
+            <script src="@Url.Content("~/Content/hyperspace/")assets/js/jquery.scrolly.min.js"></script>
+            <script src="@Url.Content("~/Content/hyperspace/")assets/js/skel.min.js"></script>
+            <script src="@Url.Content("~/Content/hyperspace/")assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="@Url.Content("~/Content/hyperspace/")assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="@Url.Content("~/Content/hyperspace/")assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+﻿@model Nomaddoors.Models.VMUser
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_newLayout2.cshtml";
+}
+
+
+<div id="main">
+
+    <!-- Post -->
+    <article class="post">
+        <header>
+            <div class="title">
+                <h2>@Html.DisplayFor(modelItem => Model.Name) @Html.DisplayFor(modelItem => Model.Surname)</h2>
+                <p style="text-transform:none;">@Html.DisplayFor(modelItem => Model.Email)</p>
+                
+                    <img class="image featured" src="@Url.Content("~/Images/User/")@Model.Image" alt="" />
+            </div>
+            <div class="meta" style="min-width: 20em; width: 20em;">
+                <style>
+                    header p {
+                        font-family: "Raleway", Helvetica, sans-serif;
+                        font-size: 1.2em;
+                        font-weight: 500;
+                        letter-spacing: 0.05em;
+                        line-height: 1.5;
+                        margin-top: 1em;
+                        text-transform: none;
+                    }
+                </style>
+                <p>Age: @Html.DisplayFor(modelItem => Model.Age)</p>
+                @if (Model.Type == "Guide") { 
+                <p>Languages: @Html.DisplayFor(modelItem => Model.Language)</p>
+                <p class="icon fa-mobile-phone"> @Html.DisplayFor(modelItem => Model.Telephone)</p>
+                <p class="icon fa-whatsapp"> @Html.DisplayFor(modelItem => Model.Whatsapp)</p>
+                }
+                @if (Request.IsAuthenticated)
+                {
+                    var identity = (HttpContext.Current.User as Nomaddoors.MyPrincipal).Identity as Nomaddoors.MyIdentity;
+
+                    if (identity.User.ID==Model.ID)
+                    {
+
+                     <a href="@Url.Action("EditImage", "User")" class="button special fit">Change Photo</a>
+                    <a href="@Url.Action("DeleteImage", "User")" class="button special fit">Delete Photo</a>
+                }
+                    
+                }
+            </div>
+            
+        </header>
+        
+        <p>@Html.DisplayFor(modelItem => Model.Info)</p>
+        <!--<footer>
+            <ul class="actions">
+                <li><a href="#" class="button big">Send Message</a></li>
+            </ul>
+            <ul class="stats">
+                <li><a href="#">General</a></li>
+                <li><a href="#" class="icon fa-heart">28</a></li>
+                <li><a href="#" class="icon fa-comment">128</a></li>
+            </ul>
+        </footer>-->
+    </article>
+
+    </div>
+
+<section id="sidebar">
+
+    <!-- Intro -->
+    <!--
+        <section id="intro">
+        <header>
+            <h2>Guiding Festivals</h2>
+        </header>
+    </section>
+        -->
+    @if (Request.IsAuthenticated)
+{
+    var identity = (HttpContext.Current.User as Nomaddoors.MyPrincipal).Identity as Nomaddoors.MyIdentity;
+
+    if (identity.User.ID == Model.ID)
+    {
+        <section>
+            <a href="@Url.Action("Edit", new { id = Model.ID })" class="button special fit">Edit Profile</a>
+        </section>
+    }
+    }
+
+    <!-- Mini Posts -->
+    @if(Model.guiding.Count!=0){
+        <section>
+        <div class="mini-posts">
+            <h2>Guiding Events</h2>
+            <!-- Mini Post -->
+
+@foreach (var ja in Model.guiding)
+            {
+            <article class="mini-post">
+                <header>
+                    <h3><a href="@Url.Action("Details", "Home", new { id = ja.ID })">@Html.DisplayFor(modelItem => ja.Name)</a></h3>
+                    <time class="published" datetime="2015-10-20">@Html.DisplayFor(modelItem => ja.Date)</time>
+                    <a href="#" class="author"><img src="@Url.Content("~/Images/")titleLogo.png" alt="" /></a>
+                </header>
+                <a href="@Url.Action("Details", "Home", new { id = ja.ID })" class="image"><img src="@Url.Content("~/Images/postCover/")@ja.Img" alt="" /></a>
+            </article>
+}
+        </div>
+    </section>
+    }
+
+
+    @if (Model.going.Count!= 0)
+    {
+        <section>
+            <div class="mini-posts">
+                <h2>Going Events</h2>
+                <!-- Mini Post -->
+                @foreach (var j in Model.going)
+                {
+                    <article class="mini-post">
+                        <header>
+                            <h3><a href="@Url.Action("Details", "Home", new { id = j.ID })">@Html.DisplayFor(modelItem => j.Name)</a></h3>
+                            <time class="published" datetime="2015-10-20">@Html.DisplayFor(modelItem => j.Date)</time>
+                            <a href="#" class="author"><img src="@Url.Content("~/Images/")titleLogo.png" alt="" /></a>
+                        </header>
+                        <a href="@Url.Action("Details", "Home", new { id = j.ID })" class="image"><img src="@Url.Content("~/Images/postCover/")@j.Img" alt="" /></a>
+                    </article>
+                }
+            </div>
+        </section>
+    }
+    <!-- Posts List 
+    <section>
+        <ul class="posts">
+            <li>
+                <article>
+                    <header>
+                        <h3><a href="#">Lorem ipsum fermentum ut nisl vitae</a></h3>
+                        <time class="published" datetime="2015-10-20">October 20, 2015</time>
+                    </header>
+                    <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+                </article>
+            </li>
+            <li>
+                <article>
+                    <header>
+                        <h3><a href="#">Lorem ipsum fermentum ut nisl vitae</a></h3>
+                        <time class="published" datetime="2015-10-20">October 20, 2015</time>
+                    </header>
+                    <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+                </article>
+            </li>
+        </ul>
+    </section>  -->
+
+    <!-- About -->
+    <section class="blurb">
+        <h2>About Us</h2>
+        <p>NomadDoors is the first website that provides full information in English about all events in the Kyrgyz Republic. In addition, NomadDoors will provide information on all activities that are planned in Central Asia as well as create opportunities for online purchase of tickets to events.</p>
+        <!-- <ul class="actions">
+         <li><a href="#" class="button">Learn More</a></li>
+     </ul> -->
+
+    </section>
+
+    <!-- Footer -->
+    <section id="footer">
+        <ul class="icons">
+            <li><a href="https://www.facebook.com/NDYourTouristPartner/" class="fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/NOMADDOORS/" class="fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <p class="copyright">&copy; NomadDoors 2016. Design: <a href="#">Talgar</a></p>
+    </section>
+
+</section>

@@ -1,0 +1,32 @@
+﻿@model Nomaddoors.Subtitle
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+}
+
+<div id="main">
+    <section>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <h2>Add any description for the Festival</h2>
+            <div class="row uniform 50%">
+
+                <div class="6u 12u$(xsmall)">
+                    @Html.EditorFor(model => model.Description)
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+
+
+                <div class="6u$ 12u$(small)">
+                    <input type="submit" style="background-color: #4692cc; color: white !important;" class="button fit" value="Save" />
+                </div>
+            </div>
+        }
+
+    </section>
+
+</div>
+

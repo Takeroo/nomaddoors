@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_A095E6_nomaddoorsModelStoreContainer" CdmEntityContainer="DB_A095E6_nomaddoorsEntities">
+    <EntitySetMapping Name="Festivals">
+      <EntityTypeMapping TypeName="DB_A095E6_nomaddoorsModel.Festival">
+        <MappingFragment StoreEntitySet="Festival">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Organizator" ColumnName="Organizator" />
+          <ScalarProperty Name="Guide" ColumnName="Guide" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Date2" ColumnName="Date2" />
+          <ScalarProperty Name="Date1" ColumnName="Date1" />
+          <ScalarProperty Name="About" ColumnName="About" />
+          <ScalarProperty Name="Short" ColumnName="Short" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="DB_A095E6_nomaddoorsModel.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Item" ColumnName="Item" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Joins">
+      <EntityTypeMapping TypeName="DB_A095E6_nomaddoorsModel.Join">
+        <MappingFragment StoreEntitySet="Join">
+          <ScalarProperty Name="Us" ColumnName="Us" />
+          <ScalarProperty Name="Fest" ColumnName="Fest" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Programs">
+      <EntityTypeMapping TypeName="DB_A095E6_nomaddoorsModel.Program">
+        <MappingFragment StoreEntitySet="Program">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Festival" ColumnName="Festival" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subtitles">
+      <EntityTypeMapping TypeName="DB_A095E6_nomaddoorsModel.Subtitle">
+        <MappingFragment StoreEntitySet="Subtitles">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Festival" ColumnName="Festival" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DB_A095E6_nomaddoorsModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Whatsapp" ColumnName="Whatsapp" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

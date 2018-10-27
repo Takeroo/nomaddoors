@@ -1,0 +1,82 @@
+﻿@model Nomaddoors.Festival
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+}
+
+<div id="main">
+    <section>
+        @using (Html.BeginForm())
+        {
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <style>
+                label {
+                    margin-bottom: 0;
+                }
+            </style>
+            <h2>Updating Festival</h2>
+            <div class="row uniform 50%">
+
+                <div class="6u 12u$(xsmall)">
+                    <label for="file">Name</label>
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+                <div class="6u$ 12u$(xsmall)">
+                    <label for="file">Short Description</label>
+                    @Html.EditorFor(model => model.Short)
+                    @Html.ValidationMessageFor(model => model.Short)
+                </div>
+
+                <div class="12u$">
+                    <label for="file">About Festival</label>
+                    @Html.EditorFor(model => model.About, new { rows = "2" })
+                    @Html.ValidationMessageFor(model => model.About)
+                </div>
+
+                <div class="6u 12u$(xsmall)">
+                    <label for="file">Price</label>
+                    @Html.EditorFor(model => model.Price)
+                    @Html.ValidationMessageFor(model => model.Price)
+                </div>
+
+                <div class="6u$ 12u$(xsmall)">
+                    <label for="file">Organizator</label>
+                    @Html.EditorFor(model => model.Organizator)
+                    @Html.ValidationMessageFor(model => model.Organizator)
+                </div>
+
+
+                <div class="6u 12u$(xsmall)">
+                    <label for="file">City</label>
+                    @Html.EditorFor(model => model.City)
+                    @Html.ValidationMessageFor(model => model.City)
+                </div>
+
+                <div class="6u$ 12u$(xsmall)">
+                    <label for="file">Province</label>
+                    @Html.EditorFor(model => model.Province)
+                    @Html.ValidationMessageFor(model => model.Province)
+                </div>
+
+                <div class="12u$ 12u$(xsmall)">
+                    <label for="file">Address</label>
+                </div>
+
+                    <div class="6u 12u$(xsmall)">
+                        @Html.EditorFor(model => model.Address)
+                        @Html.ValidationMessageFor(model => model.Address)
+                    </div>
+
+
+                    <div class="6u$ 12u$(small)">
+                        <input type="submit" style="background-color: #4692cc; color: white !important;" class="button fit" value="Save" />
+                    </div>
+                </div>
+        }
+
+    </section>
+
+</div>

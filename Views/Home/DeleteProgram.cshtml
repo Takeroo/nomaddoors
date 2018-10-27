@@ -1,0 +1,32 @@
+﻿@model Nomaddoors.Program
+@{
+    ViewBag.Title = "DeleteDescription";
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+}
+
+<div id="main">
+    <section>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <h2>Are you sure to delete</h2>
+            <div class="row uniform 50%">
+
+                <div class="6u 12u$(xsmall)">
+                    @Html.DisplayFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+
+
+                <div class="6u$ 12u$(small)">
+                    <input type="submit" style="background-color: #4692cc; color: white !important;" class="button fit" value="Delete" />
+                </div>
+            </div>
+        }
+
+    </section>
+
+</div>
+

@@ -1,0 +1,39 @@
+﻿@model List<Nomaddoors.Models.VMUser>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+}
+
+<div id="main">
+    <section>
+        <p>
+
+            <h1>All Users</h1>
+            <div class="table-wrapper">
+                <table class="alt">
+                    <thead>
+                        <tr>
+                            <th><h3>Name</h3></th>
+                            <th><h3>Surname</h3></th>
+                            <th><h3>Email</h3></th>
+                            <th><h3>Telephone</h3></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><h3>@Html.DisplayFor(modelItem => item.Name)</h3></td>
+                                <td><h3>@Html.DisplayFor(modelItem => item.Surname)</h3></td>
+                                <td><h3>@Html.DisplayFor(modelItem => item.Email)</h3></td>
+                                <td><h3>@Html.DisplayFor(modelItem => item.Telephone)</h3></td>
+                                <td>@Html.ActionLink("Details", "Details", new { id = item.ID })</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+    </section>
+</div>
+

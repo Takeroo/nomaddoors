@@ -1,0 +1,45 @@
+﻿@model Nomaddoors.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+}
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <h1>Login</h1>
+    <div class="row uniform">
+        
+
+        <div class="3u 12u$(xsmall)"></div>
+        <div class="6u 12u$(xsmall)">
+            <div>
+                @Html.TextBoxFor(model => model.UserName, new { placeholder = "E-mail" })
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+
+            <p></p>
+            <div>
+                @Html.TextBoxFor(model => model.Password, new { type = "password", placeholder = "Password" })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <p></p>
+            <div>
+                @Html.CheckBoxFor(m => m.RememberMe, new { type = "checkbox" })
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </div>
+            <p></p>
+            <div class="row uniform">
+                <div class="6u 12u$(xsmall)">
+                    <input type="submit" value="Log In" class="special fit" style="background-color: #4692cc;" />
+                </div>
+                <div class="6u$ 12u$(xsmall)">
+                    <a href="@Url.Action("Register", "Account")" class="button fit">Register</a>
+                </div>
+            </div>
+        </div>
+        <div class="3u$ 12u$(xsmall)"></div>
+    </div>
+}
+

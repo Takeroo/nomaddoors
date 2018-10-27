@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>NomadDoors</title>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/Images/titleLogo.png")" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="@Url.Content("~/Content/helios/")assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
+<body class="homepage">
+    <div id="page-wrapper">
+
+        <!-- Header -->
+
+
+        <div id="header">
+            <!-- Inner -->
+            <div class="inner">
+                <header>
+                    <h1>WELCOME TO THE CULTURAL EVENTS AND FESTIVALS OF KYRGYZSTAN</h1>
+                    <p></p>
+                    <p>Get lost in Nomad Life</p>
+                </header>
+                <footer>
+                    <a href="#banner" class="button circled scrolly">Explore</a>
+                </footer>
+            </div>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li><a href="#" class="logo"><img width="20%" src="Images/main.png" /></a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <!--header-->
+        
+       
+
+        @RenderBody()
+
+        <!-- Footer -->
+
+        <div id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="12u">
+
+                        <!-- Contact -->
+                        <section class="contact">
+                            <p>Nomad Doors is the unique travel platform in Kyrgyzstan where tourist can find information about different cultural events and festivals. Our website page is the place where you can join to any events and festivals online; also our team provides guides for going to events and festivals.</p>
+                            <ul class="icons">
+                                <li><a href="https://www.facebook.com/NDYourTouristPartner/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                                <li><a href="https://www.instagram.com/NOMADDOORS/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                                <li><a href="#" class="icon fa-rss"><span class="label">RSS</span></a></li>
+                                <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+                            </ul>
+
+
+                            <!-- Copyright -->
+                            <div class="copyright">
+                                <ul class="menu">
+                                    <li>&copy;  NomadDoors 2016.</li>
+                                    <li> Designed by: <a href="#">Talgar</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @Analytics.GetGoogleHtml("UA-80849255-1")
+    @Analytics.GetGoogleHtml("UA-80829163-1")
+
+    <!-- Scripts -->
+    <script src="@Url.Content("~/Content/helios/")assets/js/jquery.min.js"></script>
+    <script src="@Url.Content("~/Content/helios/")assets/js/jquery.dropotron.min.js"></script>
+    <script src="@Url.Content("~/Content/helios/")assets/js/jquery.scrolly.min.js"></script>
+    <script src="@Url.Content("~/Content/helios/")assets/js/jquery.onvisible.min.js"></script>
+    <script src="@Url.Content("~/Content/helios/")assets/js/skel.min.js"></script>
+    <script src="@Url.Content("~/Content/helios/")assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="@Url.Content("~/Content/helios/")assets/js/main.js"></script>
+</body>
+</html>
+

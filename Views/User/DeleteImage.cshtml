@@ -1,0 +1,31 @@
+﻿@model Nomaddoors.Image
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+}
+
+<div id="main" class="wrapper style1">
+    <div class="container">
+        <section>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <h2>Are you sure to delete</h2>
+                <div class="row uniform 50%">
+
+                    <div class="4u 6u$(xsmall)">
+                        <span class="image fit"><img src="data:image/png;base64, @Convert.ToBase64String(Model.Data, 0, Model.Data.Length)" alt="" /></span>
+                    </div>
+
+
+                    <div class="12u$ 12u$(small)">
+                        <input type="submit" class="button fit" value="Delete" />
+                    </div>
+                </div>
+            }
+
+        </section>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@model Nomaddoors.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+}
+
+
+<section>
+    <h1>Register</h1>
+    <div class="row uniform">
+        <div class="2u 12u$(xsmall)"></div>
+        <div class="8u 12u$(medium)">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                //@Html.ValidationSummary()
+
+                <div class="row uniform">
+                    <div class="6u 12u$(xsmall)">
+                        @Html.TextBoxFor(model => model.Name, new { placeholder = "Name" })
+                        <div style="color:red;">@Html.ValidationMessageFor(model => model.Name)</div>
+                    </div>
+                    <div class="6u$ 12u$(xsmall)">
+                        @Html.TextBoxFor(model => model.Surname, new { placeholder = "Surname" })
+                        <div style="color:red;">@Html.ValidationMessageFor(model => model.Surname)</div>
+                    </div>
+                    <div class="12u$ 12u$(xsmall)">
+                        @Html.TextBoxFor(model => model.Email, new { placeholder = "E-mail" })
+                        <div style="color:red;">@Html.ValidationMessageFor(model => model.Email)</div>
+                    </div>
+                    <div class="6u 12u$(xsmall)">
+                        @Html.TextBoxFor(model => model.Password, new { type = "password", placeholder = "Password" })
+                        <div style="color:red;">@Html.ValidationMessageFor(model => model.Password)</div>
+                    </div>
+                    <div class="6u$ 12u$(xsmall)">
+                        @Html.TextBoxFor(model => model.ConfirmPassword, new { type = "password", placeholder = "Password Confirmation" })
+                        <div style="color:red;">@Html.ValidationMessageFor(model => model.ConfirmPassword)</div>
+                    </div>
+                    <div class="6u 12u$(xsmall)">
+                        @Html.TextBoxFor(model => model.Birthday, new { type = "date" })
+                        <div style="color:red;">@Html.ValidationMessageFor(model => model.Birthday)</div>
+                    </div>
+                    <div class="6u 12u$(xsmall)">
+                        <div class="select-wrapper">
+                            @Html.DropDownListFor(model => model.Gender, new SelectList(new[] { "-GENDER-", "Male", "Female" }))
+                            <div style="color:red;">@Html.ValidationMessageFor(model => model.Gender)</div>
+                        </div>
+                    </div>
+                    <div class="6u 12u$(xsmall)">
+                        @Html.TextBoxFor(model => model.Country, new { placeholder = "Where are you from?" })
+                        <div style="color:red;">@Html.ValidationMessageFor(model => model.Country)</div>
+                    </div>
+                    <div class="6u$ 12u$(xsmall)">
+                        <input type="submit" value="Register" class="special fit" style="background-color: #4692cc;" />
+                    </div>
+
+                </div>
+            }
+        </div>
+        <div class="2u$ 12u$(xsmall)"></div>
+    </div>
+</section>

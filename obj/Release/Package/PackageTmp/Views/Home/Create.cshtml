@@ -1,0 +1,91 @@
+﻿@model Nomaddoors.Models.VMFestival
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+}
+
+
+<div id="main">
+    <section>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <h2>Register new Festival</h2>
+            <div class="row uniform 50%">
+
+                <div class="6u 12u$(xsmall)">
+                    @Html.TextBoxFor(model => model.Name, new { placeholder = "Name" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+                <div class="6u$ 12u$(xsmall)">
+                    @Html.TextBoxFor(model => model.Short, new { placeholder = "Short Description" })
+                    @Html.ValidationMessageFor(model => model.Short)
+                </div>
+                <div class="6u 12u$(xsmall)">
+                    @Html.TextBoxFor(model => model.Organizator, new { placeholder = "Organizator" })
+                    @Html.ValidationMessageFor(model => model.Organizator)
+                </div>
+                <div class="6u$ 12u$(xsmall)">
+                    @Html.TextBoxFor(model => model.Price, new { type="number", placeholder = "Price in USD" })
+                    @Html.ValidationMessageFor(model => model.Price)
+                </div>
+
+                <div class="12u$">
+                    @Html.TextAreaFor(model => model.About, new { name = "demo-message", placeholder = "About-1", rows = "4" })
+                    @Html.ValidationMessageFor(model => model.About)
+                </div>
+
+                <div class="6u 12u$(xsmall)">
+                    <div class="select-wrapper">
+                        @Html.DropDownListFor(model => model.Region, new SelectList(new[] { "-Choose region-", "Bishkek", "Chui", "Osh", "Issyk-Kul", "Naryn", "Jalal-Abad", "Batken", "Talas" }))
+                        @Html.ValidationMessageFor(model => model.Region)
+                    </div>
+                </div>
+
+                <div class="6u$ 12u$(xsmall)">
+                    @Html.TextBoxFor(model => model.City, new { placeholder = "City" })
+                    @Html.ValidationMessageFor(model => model.City)
+                </div>
+
+
+                <div class="6u 12u$(xsmall)">
+                    @Html.TextBoxFor(model => model.Province, new { placeholder = "Province" })
+                    @Html.ValidationMessageFor(model => model.Province)
+                </div>
+
+                <div class="6u$ 12u$(xsmall)">
+                    @Html.TextBoxFor(model => model.Address, new { placeholder = "Address" })
+                    @Html.ValidationMessageFor(model => model.Address)
+                </div>
+
+                <div class="6u 12u$(xsmall)">
+                    @Html.TextBoxFor(model => model.Date1, new { type = "date"})
+                    @Html.ValidationMessageFor(model => model.Date1)
+                </div>
+                
+                <div class="6u$ 12u$(xsmall)">
+                    @Html.TextBoxFor(model => model.Date2, new { type = "date"})
+                    @Html.ValidationMessageFor(model => model.Date2)
+                </div>
+
+                <div class="12u 12u$(xsmall)">
+                    <label for="file">Upload Festival Photos</label>
+                    </div>
+                <div class="3u 12u$(xsmall)">
+
+                </div>
+
+                    <div class="6u 12u$(small)">
+                        <input type="submit" style="background-color: #4692cc; color: white !important;" class="button fit" value="Register" />
+                    </div>
+                <div class="3u$ 12u$(xsmall)">
+
+                </div>
+                </div>
+        }
+
+    </section>
+
+    </div>

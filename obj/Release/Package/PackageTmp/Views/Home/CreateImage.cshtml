@@ -1,0 +1,27 @@
+﻿@model Nomaddoors.Models.ImageType
+
+@{
+    ViewBag.Title = "CreateImage";
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+}
+@using (Html.BeginForm("CreateImage", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div id="main" class="wrapper style1">
+        <div class="container">
+            <h1>Upload Image</h1>
+            <div class="6u 12u$(xsmall)">
+                @Html.TextBoxFor(model => model.File, new { type = "file", @class = "button fit icon fa-upload" })
+                @Html.ValidationMessageFor(model => model.File)
+
+            </div>
+
+            <div class="6u$ 12u$(small)">
+                <input type="submit" value="Save" />
+            </div>
+        </div>
+
+    </div>
+
+}

@@ -1,0 +1,84 @@
+﻿@model Nomaddoors.User
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+}
+
+<div id="main">
+    <section>
+        @using (Html.BeginForm())
+        {
+            DateTime d1 = Model.Birth ?? DateTime.Now;
+            
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+        <style>
+            label{
+                margin-bottom:0;
+            }
+        </style>
+            <h2>Updating Profile</h2>
+            <div class="row uniform 50%">
+
+                <div class="6u 12u$(xsmall)">
+                    <label for="file">Name</label>
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+                <div class="6u$ 12u$(xsmall)">
+                    <label for="file">Surname</label>
+                    @Html.EditorFor(model => model.Surname)
+                    @Html.ValidationMessageFor(model => model.Surname)
+                </div>
+
+                <div class="12u$">
+                    <label for="file">Who are you?</label>
+                    @Html.EditorFor(model => model.Info, new { rows = "2" })
+                    @Html.ValidationMessageFor(model => model.Info)
+                </div>
+                
+                <div class="6u 12u$(xsmall)">
+                    <label for="file">Birtday</label>
+                    @Html.TextBoxFor(model => model.Birth, new { @Value = d1.ToString(" dd.MM.yyyy")})
+                    @Html.ValidationMessageFor(model => model.Birth)
+                </div>
+
+                <div class="6u$ 12u$(xsmall)">
+                    <label for="file">Languages</label>
+                    @Html.EditorFor(model => model.Language)
+                    @Html.ValidationMessageFor(model => model.Language)
+                </div>
+
+                <div class="6u 12u$(xsmall)">
+                    <label for="file">Where are you from?</label>
+                    @Html.EditorFor(model => model.Country)
+                    @Html.ValidationMessageFor(model => model.Country)
+                </div>
+
+
+                <div class="6u$ 12u$(xsmall)">
+                    <label for="file">Phone Number</label>
+                    @Html.EditorFor(model => model.Telephone, new { placeholder = "Phone Number" })
+                    @Html.ValidationMessageFor(model => model.Telephone)
+                </div>
+
+                <div class="12u$ 12u$(xsmall)">
+                    <label for="file">Whatsapp Number</label>
+                    </div>
+
+                    <div class="6u 12u$(xsmall)">
+                        @Html.EditorFor(model => model.Whatsapp, new { placeholder = "WhatsApp" })
+                        @Html.ValidationMessageFor(model => model.Whatsapp)
+                    </div>
+
+
+                    <div class="6u$ 12u$(small)">
+                        <label for="file"></label>
+                        <input type="submit" style="background-color: #4692cc; color: white !important;" class="button fit" value="Save" />
+                    </div>
+                </div>
+        }
+
+    </section>
+
+</div>

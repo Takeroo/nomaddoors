@@ -1,0 +1,245 @@
+﻿@model Nomaddoors.Models.VMFestival
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_newLayout2.cshtml";
+}
+
+
+<div id="main">
+
+    <!-- Post -->
+    <article class="post">
+        <header>
+            <div class="title">
+                <h2>@Html.DisplayFor(modelItem => Model.Name)</h2>
+                <p>@Html.DisplayFor(modelItem => Model.Short)</p>
+            </div>
+            <div class="meta">
+                <time class="published" datetime="2015-11-01">@Html.DisplayFor(modelItem => Model.Date)</time>
+                <h3>$ @Html.DisplayFor(modelItem => Model.Price)</h3>
+                <p>@Html.DisplayFor(modelItem => Model.City), @Html.DisplayFor(modelItem => Model.Region)</p>
+                <a href="#" class="author">@Html.DisplayFor(modelItem => Model.Organizator)</a>
+
+                @if (Request.IsAuthenticated)
+                {
+                    var identity = (HttpContext.Current.User as Nomaddoors.MyPrincipal).Identity as Nomaddoors.MyIdentity;
+                    
+                    if (identity.User.ID==Model.Guide)
+                    {
+                        <a href="@Url.Action("Edit", new { id = Model.ID })" style="background-color: #4692cc; color: white !important;" class="button special fit">Edit Festival</a>
+                    }
+                    else
+                    {
+                        int i = 0;
+                        foreach (var j in Model.joins)
+                        {
+                            if (identity.User.ID == j.ID)
+                            {
+                                i = 1;
+                            }
+                        }
+
+                        if (i == 0)
+                        {
+                            <a href="@Url.Action("Join", new { id = Model.ID })" style="background-color: #4692cc; color: white !important;" class="button special fit">Join Festival</a>
+                        }
+                    }
+                }
+                else
+                {
+                    <a href="@Url.Action("Join", new { id = Model.ID})" style="background-color: #4692cc; color: white !important;" class="button special fit">Join Festival</a>
+                }
+            </div>
+        </header>
+        <a href="#" class="image featured"><img src="@Url.Content("~/Images/postCover/")@Model.Img" alt="" /></a>
+@if (Request.IsAuthenticated)
+{
+    var identity = (HttpContext.Current.User as Nomaddoors.MyPrincipal).Identity as Nomaddoors.MyIdentity;
+    if (identity.User.Type == "Guide")
+    {
+        <h4><a class="button small" href="@Url.Action("CreateCoverImage", new { id = Model.ID })">Add Cover</a></h4>
+    }
+}
+
+        <p>@Html.DisplayFor(modelItem => Model.About)</p>
+        <div class="box alt">
+            <div class="row uniform">
+                @foreach (var image in Model.Images)
+                {
+                    <div class="4u"><span class="image fit"><img src="@Url.Content("~/Images/postImages/")@image.Url" alt="" /></span>
+                        @if (Request.IsAuthenticated)
+                        {
+                            var identity = (HttpContext.Current.User as Nomaddoors.MyPrincipal).Identity as Nomaddoors.MyIdentity;
+                            if (identity.User.Type == "Guide")
+                            {
+                            @Html.ActionLink("  Change", "EditImage", new { id = image.ID, item = Model.ID })
+
+                            @Html.ActionLink("  Delete", "DeleteImage", new { id = image.ID, item = Model.ID })
+                        }
+                        }
+                </div>
+                }
+            </div>
+            @if (Request.IsAuthenticated)
+            {
+                var identity = (HttpContext.Current.User as Nomaddoors.MyPrincipal).Identity as Nomaddoors.MyIdentity;
+                if (identity.User.Type == "Guide")
+                {
+                <h4><a class="button small" href="@Url.Action("CreateImage", new { id = Model.ID })">Add Picture</a></h4>
+                }
+            }
+
+        </div>
+        
+        <div class="row">
+            <div class="12u 12u$(medium)">
+                @if (Model.subtitles.Count()!=null && Model.subtitles.Count() != 0)
+                {
+                <h4>Details of the Festival</h4>
+                <ul>
+                    @foreach (var sub in Model.subtitles) { 
+                    <li>@Html.DisplayFor(modelItem => sub.Description)  
+                        @if (Request.IsAuthenticated)
+                        {
+                            var identity = (HttpContext.Current.User as Nomaddoors.MyPrincipal).Identity as Nomaddoors.MyIdentity;
+                            if (identity.User.Type == "Guide")
+                            {
+                                @Html.ActionLink("  Edit", "EditDescription", new { id = sub.ID })
+
+                            @Html.ActionLink("  Delete", "DeleteDescription", new { id = sub.ID })
+                            }
+                            
+                             
+                        }
+                    </li> 
+                    }
+                    
+                </ul>
+                }
+                @if (Request.IsAuthenticated)
+                {
+                    var identity = (HttpContext.Current.User as Nomaddoors.MyPrincipal).Identity as Nomaddoors.MyIdentity;
+                    if (identity.User.Type == "Guide")
+                    {
+                    <h4><a class="button small" href="@Url.Action("CreateDescription", new { id = Model.ID })">Add new Description</a></h4>
+                }
+                }
+           </div>
+       </div>
+
+        <div class="table-wrapper">
+@if (Model.programs.Count() != null && Model.programs.Count() != 0)
+                {
+            <h4>Program of the Festival</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var prog in Model.programs)
+                    {
+                     <tr>
+                        <td>@Html.DisplayFor(modelItem => prog.Time)</td>
+                        <td>@Html.DisplayFor(modelItem => prog.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => prog.Description)</td>
+                        @if (Request.IsAuthenticated)
+                        {
+                            var identity = (HttpContext.Current.User as Nomaddoors.MyPrincipal).Identity as Nomaddoors.MyIdentity;
+                            if (identity.User.Type == "Guide")
+                            {
+                            <td>@Html.ActionLink("Edit", "EditProgram", new { id = prog.ID }) | @Html.ActionLink("Delete", "DeleteProgram", new { id = prog.ID })</td>
+                        }
+                        }
+                    </tr>
+                    }
+                    
+                </tbody>
+            </table>
+            }
+         @if (Request.IsAuthenticated)
+        {
+            var identity = (HttpContext.Current.User as Nomaddoors.MyPrincipal).Identity as Nomaddoors.MyIdentity;
+            if (identity.User.Type == "Guide")
+            {
+                    <h4><a class="button small" href="@Url.Action("CreateProgram", new { id = Model.ID })">Add Program</a></h4>
+         }
+         }
+        </div>
+
+            
+
+                <footer>
+                    <ul class="actions">
+                      <!--  <li><a href="#" class="button big">Continue Reading</a></li> -->
+                    </ul>
+                    <ul class="stats">
+                        <li><a href="#">General</a></li>
+                        <li><a href="#" class="icon fa-heart">28</a></li>
+                        <li><a href="#" class="icon fa-comment">128</a></li>
+                    </ul>
+                </footer>
+    </article>
+    </div>
+
+
+<section id="sidebar">
+
+    <!-- Intro -->
+    <section id="intro">
+           
+        <article class="mini-post">
+            <header style="padding: 1em 0 0 0; ">
+                <p style="font-size:1.2em; margin-bottom:0;">Guide</p>
+                <a href="@Url.Action("Details","User", new { id = Model.gid.ID })" class="logo"><img src="@Url.Content("~/Images/User/")@Model.gid.Image" alt="" /></a>
+                <h3><a style="font-size:1.5em;" href="@Url.Action("Details","User", new { id = Model.gid.ID })">@Html.DisplayFor(modelItem => Model.gid.Name) @Html.DisplayFor(modelItem => Model.gid.Surname)</a></h3>
+                <p style="text-transform:none;">@Html.DisplayFor(modelItem => Model.gid.Email)</p>
+            </header>
+        </article>
+    </section>
+    <!-- Posts List -->
+@if (Model.joins.Count != 0) {
+    <section>
+        
+        <h3>Joined people</h3>
+        <ul class="posts">
+            @foreach (var j in Model.joins)
+            {
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="@Url.Action("Details","User", new { id = j.ID })">@Html.DisplayFor(modelItem => j.Name) @Html.DisplayFor(modelItem => j.Surname)</a></h3>
+                            <p style="text-transform:none;letter-spacing:0.1em;">@Html.DisplayFor(modelItem => j.Email)</p>
+                        </header>
+                      
+                            <a href="@Url.Action("Details","User", new { id = j.ID })" class="image"><img src="@Url.Content("~/Images/User/")@j.Image" alt="" /></a>
+                    </article>
+                </li>
+            }
+
+        </ul>
+    </section>
+}
+
+    <!-- About -->
+    <section class="blurb">
+        <h2>About Us</h2>
+        <p>NomadDoors is the first website that provides full information in English about all events in the Kyrgyz Republic. In addition, NomadDoors will provide information on all activities that are planned in Central Asia as well as create opportunities for online purchase of tickets to events.</p>
+       <!-- <ul class="actions">
+            <li><a href="#" class="button">Learn More</a></li>
+        </ul> -->
+    </section>
+
+    <section id="footer">
+        <ul class="icons">
+            <li><a href="https://www.facebook.com/NDYourTouristPartner/" class="fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.instagram.com/NOMADDOORS/" class="fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+            <li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+        <p class="copyright">&copy; NomadDoors 2016. Design: <a href="#">Talgar</a></p>
+    </section>
+</section>
